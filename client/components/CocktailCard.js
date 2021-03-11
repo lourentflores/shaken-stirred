@@ -5,14 +5,16 @@ export const CocktailCard = ({
   description,
   ingredients,
   preparation,
-  image,
+  img,
 }) => (
   <div className="recipes">
     <span>
       <h2 className="name">{name}</h2>
     </span>
+    <span>
+        <img className="cocktail-img" alt="cocktail" src={img} />
+    </span>
     <ul className="cocktail-card">
-      <img alt="cocktail" src={image} />
       <li>
         <strong>Drunk History:</strong>
         {description}

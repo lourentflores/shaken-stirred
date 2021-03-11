@@ -40,7 +40,6 @@ class App extends Component {
           <h1>SHAKEN AND STIRRED</h1>
         </header>
         <SearchBox
-          className="search-form"
           value={this.searchField}
           handleChange={this.handleChange}></SearchBox>
         <CocktailList cocktails={filteredCocktails}></CocktailList>
