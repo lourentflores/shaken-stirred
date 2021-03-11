@@ -1,51 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+
 import { CocktailList } from './components/CocktailList';
 import { SearchBox } from './components/SearchBox';
 import './styles.scss';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      cocktailList: [],
-      searchField: '',
-    };
+const App = () => {
+  const [searchInput, setSearchInput] = useState('');
+  const [cocktailList, setCocktailList] = useState([]);
 
-    this.handleChange = this.handleChange.bind(this);
-  }
+  useEffect(() => {
+    const fetchList = async () => {
+      try {
+        const result = await axios.get('/cocktails');
+        setCocktailList(result.data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchList();
+  }, [searchInput])
 
-  componentDidMount() {
-    fetch('/cocktails')
-      .then((res) => res.json())
-      .then((cocktails) => {
-        this.setState({ cocktailList: cocktails });
-      })
-      .catch((err) => console.log(err));
-  }
+  const handleChange = (e) => setSearchInput(e.target.value)
 
-  handleChange(e) {
-    this.setState({ searchField: e.target.value });
-  }
-
-  render() {
-    const { cocktailList, searchField } = this.state;
-    const filteredCocktails = cocktailList.filter((cocktail) =>
-      cocktail.name.toLowerCase().includes(searchField.toLowerCase())
-    );
-
+  const filteredCocktails = cocktailList.filter((cocktail) =>
+    cocktail.name.toLowerCase().includes(searchInput.toLowerCase()))
+  
     return (
-      <div className="App">
-        <header className="header">
-          <h1>SHAKEN AND STIRRED</h1>
-        </header>
-        <SearchBox
-          value={this.searchField}
-          handleChange={this.handleChange}></SearchBox>
-        <CocktailList cocktails={filteredCocktails}></CocktailList>
-      </div>
-    );
-  }
+    <div className="App">
+      <header className="header">
+        <h1>SHAKEN AND STIRRED</h1>
+      </header>
+      <SearchBox
+        value={searchInput}
+        handleChange={handleChange}></SearchBox>
+      <CocktailList cocktails={filteredCocktails}></CocktailList>
+    </div>
+  )
 }
 
 export default App;

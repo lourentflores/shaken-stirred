@@ -7,11 +7,9 @@ export const CocktailCard = ({
   preparation,
   img,
 }) => (
-  <div className="recipes">
+  <div className="recipe-container">
     <span>
       <h2 className="name">{name}</h2>
-    </span>
-    <span>
         <img className="cocktail-img" alt="cocktail" src={img} />
     </span>
     <ul className="cocktail-card">

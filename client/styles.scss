@@ -4,50 +4,51 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
-h1 {
-  display: flex;
+.header {
   font-family: 'Alfa Slab One', cursive;
-  justify-content: center;
-  font-size: 60px;
-  margin-top: -10px;
-  margin-bottom: -5px;
-  padding: 10px;
+  font-size: 35px;
+  margin-top: -50px;
+  margin-bottom: -40px;
+  text-align: center;
 }
 
 .name {
   font-size: 40px;
   font-family: 'Alfa Slab One', cursive;
+  text-align: center;
 }
 
 .search-form {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-
-}
-
-.search-button {
-  margin-left: 10px;
-  font-family: 'Courier New', Courier, monospace;
 }
 
 .cocktail-card {
   list-style-type: none;
+  margin-right: 30px;
 }
 
 .cocktail-img {
   width: 300px;
   margin-bottom: 15px;
+  border-radius: 55%;
 }
 
-.recipes {
+.recipe-container {
   border: 1px solid black;
-  background-color: transparent;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
   align-items: center;
+  margin-bottom: 5px;
+}
+
+.cocktail-list {
+  width: 85vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
 }
 
